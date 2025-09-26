@@ -58,4 +58,12 @@ export const testimonials = [
     quote: "As a freelancer, I need to share large design files easily and securely.",
     rating: 5,
   },
+  {
+    name: "Prachanon HongHnong",
+    role: "Engineer",
+    company: "SCG",
+    img: "/images/rr.jpg",
+    quote: "Convenient for an engineer like me. Easy to use, but requires a bit of learning.",
+    rating: 3,
+  },
 ];

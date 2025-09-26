@@ -4,7 +4,8 @@ import { Check } from "lucide-react";
 import { pricingPlans as defaultPlans } from "../../assets/data";
 
 const PricingSection = ({ pricingPlans }) => {
-  const plans = pricingPlans && pricingPlans.length ? pricingPlans : defaultPlans;
+  const plans =
+    pricingPlans && pricingPlans.length ? pricingPlans : defaultPlans;
 
   return (
     <div className="py-20 bg-gray-50">
@@ -31,11 +32,15 @@ const PricingSection = ({ pricingPlans }) => {
               {/* Header */}
               <div
                 className={`px-6 py-8 ${
-                  plan.highlighted ? "bg-gradient-to-br from-red-50 to-white" : "bg-white"
+                  plan.highlighted
+                    ? "bg-gradient-to-br from-red-50 to-white"
+                    : "bg-white"
                 }`}
               >
                 <div className="flex justify-between items-center">
-                  <h3 className="text-2xl font-semibold text-gray-900">{plan.name}</h3>
+                  <h3 className="text-2xl font-semibold text-gray-900">
+                    {plan.name}
+                  </h3>
                   {plan.highlighted && (
                     <span className="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-red-100 text-red-800">
                       Popular
@@ -44,17 +49,25 @@ const PricingSection = ({ pricingPlans }) => {
                 </div>
 
                 {plan.description && (
-                  <p className="mt-3 text-sm text-gray-600">{plan.description}</p>
+                  <p className="mt-3 text-sm text-gray-600">
+                    {plan.description}
+                  </p>
                 )}
 
                 <div className="mt-8 flex items-baseline gap-2">
                   {plan.currency && (
-                    <span className="text-2xl font-semibold text-gray-900">{plan.currency}</span>
+                    <span className="text-2xl font-semibold text-gray-900">
+                      {plan.currency}
+                    </span>
                   )}
                   <span className="text-4xl font-bold text-gray-900">
-                    {typeof plan.price === "number" ? plan.price.toLocaleString() : plan.price}
+                    {typeof plan.price === "number"
+                      ? plan.price.toLocaleString()
+                      : plan.price}
                   </span>
-                  {plan.period && <span className="text-sm text-gray-500">{plan.period}</span>}
+                  {plan.period && (
+                    <span className="text-sm text-gray-500">{plan.period}</span>
+                  )}
                 </div>
               </div>
 

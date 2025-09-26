@@ -1,4 +1,5 @@
 import React from "react";
+import { Star } from "lucide-react";
 import { testimonials as defaultTestimonials } from "../../assets/data"; 
 
 const TestimonialsSection = ({ testimonials }) => {
@@ -31,6 +32,13 @@ const TestimonialsSection = ({ testimonials }) => {
                                                 {t.role},{t.company}
                                             </p>
                                         </div>
+                                    </div>
+                                    <div className="mt-4 flex items-center">
+                                        {[...Array(5)].map((_, i) => (
+                                            <Star key={i} 
+                                                size={16}
+                                                className={`${i < testimonials.rating ? 'text-yellow-400' :'text-yellow-400'} fill-current`} />
+                                        ))}
                                     </div>
                                     <div className="mt-4 flex items-center"></div>
                                     <blockquote className="mt-4 text-gray-700 leading-7">
