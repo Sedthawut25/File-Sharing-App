@@ -1,0 +1,7 @@
+const MyFile = () => {
+    return (
+        <div>My file</div>
+    );
+};
+
+export default MyFile;
