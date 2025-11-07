@@ -3,7 +3,7 @@ import React from "react";
 import { Check } from "lucide-react";
 import { pricingPlans as defaultPlans } from "../../assets/data";
 
-const PricingSection = ({ pricingPlans }) => {
+const PricingSection = ({ pricingPlans, openSignUp }) => {
   const plans =
     pricingPlans && pricingPlans.length ? pricingPlans : defaultPlans;
 
@@ -86,6 +86,7 @@ const PricingSection = ({ pricingPlans }) => {
 
                 <div className="rounded-md shadow">
                   <button
+                    onClick={() => openSignUp()}
                     type="button"
                     className={`w-full inline-flex justify-center items-center rounded-md px-4 py-2 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 ${
                       plan.highlighted

@@ -25,9 +25,9 @@ const Landing = () => {
     <div className="landing-page bg-gradient-to-b from-gray-50 to-gray-100">
       <HeroSection opensignIn={openSignIn} openSignUp={openSignUp}/>
       <FeaturesSection features={features} />
-      <PricingSection pricingPlans={pricingPlans} />
+      <PricingSection pricingPlans={pricingPlans} openSignUp={openSignUp} />
       <TestimonialsSection testimonials={testimonials} />
-      <CTASection />
+      <CTASection openSignUp={openSignUp} />
       <Footer />
     </div>
   );
