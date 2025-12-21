@@ -1,3 +1,5 @@
+import { CreditCard, FilesIcon, LayoutDashboard, Receipt, Upload } from "lucide-react";
+
 // src/assets/data.js
 export const features = [
   { iconName: "ArrowUpCircle", iconColor: "text-purple-500", title: "Easy File Upload", description: "Quickly upload your files with our intuitive drag-and-drop interface." },
@@ -12,7 +14,7 @@ export const pricingPlans = [
   {
     name: "Free",
     price: 0,
-    currency: "฿",
+    currency: "$",
     period: "/mo",
     description: "Perfect for getting started",
     features: ["5 file uploads", "Basic file sharing", "7-day file retention", "Email support"],
@@ -22,7 +24,7 @@ export const pricingPlans = [
   {
     name: "Premium",
     price: 500,
-    currency: "฿",
+    currency: "$",
     period: "/mo",
     description: "For individuals with larger needs",
     features: ["500 file uploads", "Advanced file sharing", "30-day file retention", "Priority email support", "File analytics"],
@@ -32,7 +34,7 @@ export const pricingPlans = [
   {
     name: "Ultimate",
     price: 2500,
-    currency: "฿",
+    currency: "$",
     period: "/mo",
     description: "For teams and businesses",
     features: ["5000 file uploads", "Team sharing capabilities", "Unlimited file retention", "24/7 priority support", "API access"],
@@ -66,4 +68,39 @@ export const testimonials = [
     quote: "Convenient for an engineer like me. Easy to use, but requires a bit of learning.",
     rating: 3,
   },
+];
+
+//side menu bar
+export const SIDE_MENU_DATA =[
+    {
+      id: "01",
+      label: "Dashboard",
+      icon: LayoutDashboard,
+      path: "/dashboard",
+    },
+    {
+      id: "02",
+      label: "Upload",
+      icon: Upload,
+      path: "/upload",
+    },
+    {
+      id: "03",
+      label: "My File",
+      icon: FilesIcon,
+      path: "/my-files",
+    },
+    {
+      id: "04",
+      label: "Subscription",
+      icon: CreditCard,
+      path: "/subscription",
+    },
+    {
+      id: "05",
+      label: "Transactions",
+      icon: Receipt,
+      path: "/transactions",
+    }
+
 ];

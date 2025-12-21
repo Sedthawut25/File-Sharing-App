@@ -5,11 +5,16 @@ import Upload from "./pages/Upload";
 import MyFile from "./pages/Myfile";
 import Subscription from "./pages/Subscription";
 import Transactions from "./pages/Transactions";
+import PublicFileView from "./pages/PublicFileView";
 import { RedirectToSignIn, SignedIn, SignedOut } from "@clerk/clerk-react";
+import { Toaster } from "react-hot-toast";
+import { UserCreditsProvider } from "./context/UserCreditsContext";
 
 const App = () => {
     return(
+        <UserCreditsProvider>
         <BrowserRouter>
+            <Toaster />
             <Routes>
                 <Route path="/" element={<Landing />} />
                 <Route path="/dashboard" element={
@@ -42,9 +47,11 @@ const App = () => {
                         <SignedOut><RedirectToSignIn /></SignedOut>
                     </>
                 } />
+                <Route path="/file/:fileId" element={<PublicFileView />} />
                 <Route path="/*" element={<RedirectToSignIn />}></Route>
             </Routes>
         </BrowserRouter>
+        </UserCreditsProvider>
     )
 }
 
