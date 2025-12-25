@@ -1,44 +1,48 @@
-CloudShare - File Upload & Sharing App
+# CloudShare – File Upload & Sharing App (Fullstack Starter)
 
+CloudShare is a fullstack file upload and sharing application starter, designed for developers who want a modern frontend combined with a scalable backend architecture.
 
-    🧩 Features
-	•	📌 User Authentication via Clerk (email/password)
-	•	📤 File Upload with credits deduction
-	•	📁 List and view user’s files
-	•	🌐 Public sharing links for files
-	•	📥 File Download via public link
-	•	📊 User Credits tracking
-	•	⚙️ Backend API with Java / Spring Boot
-	•	📦 MongoDB storage
-	•	📍 Frontend built with React
+This project provides a working foundation for file uploads, public sharing, user credits, and authentication, while leaving room for customization and extension.
 
-⸻
+---
 
-🏁 Getting Started
+## 🧩 Features
 
-⚙️ Prerequisites
+• 📌 User Authentication via Clerk (email/password)  
+• 📤 File upload with credit-based usage  
+• 📁 List and manage user files  
+• 🌐 Public shareable links for files  
+• 📥 File download via public link  
+• 📊 User credits tracking system  
+• ⚙️ Backend API built with Java & Spring Boot  
+• 📦 MongoDB for data storage  
+• 📍 Frontend built with React  
 
-Make sure you have installed:
-	•	Java 21 or above
-	•	MongoDB (local or cloud)
-	•	Node.js
-	•	Clerk account (for user authentication)
+---
 
+## 🏁 Getting Started
 
+### ⚙️ Prerequisites
 
+Make sure you have the following installed:
 
+• Java 21 or higher  
+• MongoDB (local or cloud instance)  
+• Node.js (LTS recommended)  
+• Clerk account (for authentication)  
 
+---
 
-    Step 1: Clone the Repository
-https://github.com/Sedthawut25/File-Sharing-App.git (frontend, backend)
+### Step 1: Clone the Repository
 
+```bash
+git clone https://github.com/Sedthawut25/File-Sharing-App.git
 
 
 
 Step 2: Backend Setup
-1.	Create .env or application.properties with environment variables:
+	1.	Create application.properties (or .env) and configure environment variables:
 spring.data.mongodb.uri=mongodb://localhost:27017/cloudshare
-
 server.servlet.context-path=/api/v1.0
 
 clerk.issuer=https://<your-clerk-instance>.clerk.accounts.dev
@@ -50,11 +54,11 @@ razorpay.key.secret=your_key_secret
 
 
 
-2.	Enable CORS (if running frontend separately)
-3.	Run Backend:
 
+
+
+Run the backend:
 ./mvnw spring-boot:run
-
 
 
 Step 3: Frontend Setup
@@ -62,95 +66,106 @@ cd frontend
 npm install
 npm run dev
 
-=------------------------------------------------------------------------------------
 
-🧠 How it Works
+
+
+ How It Works
 
 User Login
 
-Users authenticate using Clerk. After login, user can:
-	•	View dashboard
-	•	Upload files
-	•	Manage files
-	•	Get public shareable links
+Users authenticate via Clerk. After login, users can:
+
+• Access dashboard
+• Upload files
+• Manage uploaded files
+• Generate public shareable links
 
 ⸻
 
 File Upload
-	•	User uploads 1–5 files at a time
-	•	Each upload deducts credits
-	•	Backend saves file metadata & file on server
-	•	Frontend shows updated credits
+
+• Users can upload 1–5 files at a time
+• Each upload deducts credits
+• Backend stores file metadata and files on the server
+• Frontend reflects updated credit balance
 
 ⸻
 
 Public Sharing
-	•	Files can be toggled public/private
-	•	Public link can be shared with anyone
-	•	Anyone with the link can view/download file without logging in
+
+• Files can be toggled public/private
+• Public links can be shared with anyone
+• Public users can view or download files without authentication
 
 ⸻
 
-⚠️ Known Limitations / Notes
+⚠️ Known Limitations & Notes
 
-✅ Authentication (Clerk)
-	•	Login is handled by Clerk.
-	•	Profile data currently stores email only.
-	•	First name / last name / avatar are not persisted yet.
-	•	To use in production, you should sync additional profile fields from Clerk (e.g., Clerk user metadata / user profile API).
+Authentication (Clerk)
 
-❗ Payments
-	•	Real payment flow is not implemented yet.
-	•	Payment module is currently a scaffold for future development.
+• Authentication is handled by Clerk
+• Profile data currently stores email only
+• First name, last name, and avatar are not persisted
+• Production usage should sync additional profile fields via Clerk user metadata API
 
-❗ File Upload for New Accounts
-	•	File upload may fail for newly registered accounts (first-time users).
-	•	Current build works for existing users, but a brand-new Clerk account might not be able to upload immediately.
-	•	Likely root causes:
-	•	Profile/Credits initialization is not triggered for new users (missing /register sync step).
-	•	API requests are rejected by backend security/CORS when token is missing/invalid or when origins are not allowed.
+⸻
 
-✅ Recommended Fix (next dev task):
-	•	Auto-create user profile + initial credits on first login (server-side), or ensure frontend calls /register once after Clerk login before enabling upload.
-	•	Improve backend CORS configuration for deployed domains (Vercel/Render) and ensure Authorization: Bearer <token> is always sent on protected endpoints.
+Payments
+
+• Real payment processing is not implemented
+• Payment module is a scaffold for future integration (Stripe / Razorpay)
+
+⸻
+
+File Upload for New Accounts
+
+• File upload may fail for newly registered users
+• Existing users work correctly
+• Possible causes:
+• Profile or credit initialization not triggered on first login
+• /register endpoint not called after authentication
+• CORS or missing Authorization headers
+
+✅ Recommended Fix (Next Development Task)
+• Auto-create user profile and initial credits on first login (server-side)
+• Or ensure frontend calls /register once after Clerk login
+• Improve backend CORS settings for deployed environments (Vercel / Render)
 
 ⸻
 
 🧩 How to Extend
 
 Add Full User Profile Sync
-	1.	Create JWT template in Clerk dashboard
-	2.	Sync firstname, lastname, profileImageUrl into user profile in backend
+	1.	Create a JWT template in Clerk Dashboard
+	2.	Sync firstname, lastname, and profileImageUrl into backend profile
 
 ⸻
 
 Add Payment Support
 
-Payment integration with Razorpay/Stripe can be implemented by:
-	1.	Creating payment gateway interface
-	2.	Integrate real provider logic
+To implement payments:
+	1.	Create a payment gateway interface
+	2.	Integrate Stripe or Razorpay provider
 	3.	Store transaction records in MongoDB
-	4.	Add UI for checkout flow
+	4.	Add frontend checkout UI
 
 ⸻
 
 🛡️ Security
-	•	JWT authentication using Clerk tokens in Spring Security filter
-	•	CORS is enabled for frontend domain
-	•	Auth middleware protects secure endpoints
+
+• JWT authentication via Clerk tokens
+• Spring Security filter for protected endpoints
+• CORS enabled for frontend domains
+• Authorization required for secure APIs
 
 
 
-
-
-
-🗂️ **API Endpoints**
 Method
 Endpoint
 Description
 GET
 /files/my
-Get files for current user
+Get current user files
 POST
 /files/upload
 Upload files
@@ -162,26 +177,19 @@ GET
 Download file
 GET
 /users/credits
-Get user remaining credits
+Get remaining credits
 POST
 /register
 Register user profile
 
+All protected endpoints require Authorization: Bearer <JWT>
 
 
+Technologies
 
-
-📦 Technologies
-	•	Java
-	•	Spring Boot
-	•	MongoDB
-	•	React
-	•	Clerk (Auth)
-	•	Axios
-
-⸻
-
-🧾 License
-
-MIT License
-
+• Java
+• Spring Boot
+• MongoDB
+• React
+• Clerk (Authentication)
+• Axios
